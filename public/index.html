@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
+  <script>
+  async function startRedirect() {
+    try {
+      const res = await fetch("/api/log", { method: "POST" });
+      const { country, destination } = await res.json();
+      window.location.replace(destination);
+    } catch (e) {
+      console.error("Redirect error:", e);
+      window.location.replace("https://google.fr");
+    }
+  }
+  document.addEventListener("DOMContentLoaded", startRedirect);
+  </script>
+</head>
+<body>
+  <p>Redirecting, please wait...</p>
+</body>
+</html>
